@@ -65,6 +65,9 @@ class Response(object):
         builder = ObjectBuilder()
 
         for prefix, event, value in ijson.parse(response.raw, buf_size=self._chunk_size):
+            print("Prefix: %s" % prefix)
+            print("event: %s" % event)
+            print("value: %s" % value)
             if (prefix, event) == ('error', 'start_map'):
                 # Matched ServiceNow `error` object at the root
                 has_error = True
